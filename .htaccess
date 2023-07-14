@@ -1,0 +1,5 @@
+RewriteRule ^new/prsk?$ https://salty.koza.rip/shop/project-sekai-all/118?page=1&limit=60&sort_by=created_date&sort_order=desc [R=302,L]
+RewriteRule ^new/bandori?$ https://salty.koza.rip/shop/bandori-all/124?page=1&limit=60&sort_by=created_date&sort_order=desc [R=302,L]
+RewriteRule ^new/preorders?$ https://salty.koza.rip/shop/preorders/190 [R=302,L]
+RewriteRule ^new/?$ https://salty.koza.rip/s/shop?page=1&limit=60&sort_by=created_date&sort_order=desc [R=302,L]
+RewriteRule ^discord/?$ https://discord.com/invite/6rpsR6pnbq [R=302,L]
