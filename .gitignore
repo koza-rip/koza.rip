@@ -4,3 +4,8 @@
 *.webp
 *.svg
 *.ico
+
+# ignore directories
+sorter/
+trackers/
+vault/
