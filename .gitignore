@@ -10,3 +10,6 @@ sorter/
 trackers/
 vault/
 zOld/
+
+# ignore files
+.htaccess
