@@ -16,18 +16,23 @@ function sC(oID, cN) {
 }
 
 let cardsArr = [];
+let cardsTemp = [];
 let cardsMatch = [];
 
 Papa.parse("https://koza.rip/assets/csv/proseka_4scard.csv", {
 	download: true,
 	complete: function(results) {
     var count = 0;
+
     for (var i = 1; i < results.data.length; i++) {
       if (results.data[i][0] != '') {
-        cardsMatch.push(parseInt(results.data[i][0]));
+        cardsTemp.push(parseInt(results.data[i][0]));
+
+        cardsMatch.push([parseInt(results.data[i][0]), parseInt(results.data[i][1])])
         count++;
       }
     }
+
     var countDiv = gID('proseka-count');
     var countDivSpan = cE('span');
     countDiv.appendChild(countDivSpan);
@@ -88,6 +93,13 @@ async function startup() {
         cardStar.className = 'card-star star-pos-' + (j+1) + ' star';
       }
     }
+    console.log(card[4].isInteger);
+    console.log(card[4]);
+    if (card[4] != "NaN") {
+      var cardMR = cE('div');
+      cardFrame.appendChild(cardMR);
+      cardMR.className = 'card-mr mr-' + card[4];
+    }
   }
 }
 
@@ -112,8 +124,12 @@ async function cardData() {
 
     var card = [];
 
-    if (cardsMatch.includes(cardID)) {
-      card.push(cardID, characterID, cardRarity, cardAttribute);
+    //console.log(cardsMatch[i][1]);
+
+    if (cardsTemp.includes(cardID)) {
+      let cardIndex = cardsTemp.indexOf(cardID);
+      let cardMasterRank = cardsMatch[cardIndex][1];
+      card.push(cardID, characterID, cardRarity, cardAttribute, cardMasterRank);
       cardsArr.push(card);
     }
   }
